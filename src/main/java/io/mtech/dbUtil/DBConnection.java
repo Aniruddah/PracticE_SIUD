@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -16,7 +17,7 @@ public class DBConnection {
 	private static Connection conn=null;
 	private static DBConnection instance=null;
 
-	private DBConnection() {
+	DBConnection() {
 		try {
 			if (conn == null) {
 //				Class.forName("oracle.jdbc.OracleDriver");
@@ -26,14 +27,14 @@ public class DBConnection {
 				//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 				conn = DriverManager.getConnection("jdbc:sqlserver://vNTDACWSSQLD002:1433;"
 						+ "databaseName=DEV_TEST;user=dev_test_dbo;password=dev_test_dbo123");
-			log.info("connection created.");
+			//log.info("connection created.");
 			
 			
 			//conn.close();
 			}
 		
 		} catch (Exception e) {
-			log.error("Connection error: "+e.getMessage());
+	//		log.error("Connection error: "+e.getMessage());
 			//System.out.println("Connection error: "+e.getMessage());
 		}
 	}
@@ -63,7 +64,7 @@ public class DBConnection {
 	        }
 	        catch(SQLException e)
 	        {
-	          log.error("The result set cannot be closed.", e);
+	//          log.error("The result set cannot be closed.", e);
 	        	
 	        }
 	    }
@@ -74,7 +75,7 @@ public class DBConnection {
 	            stmt.close();
 	        } catch (SQLException e)
 	        {
-	        log.error("The statement cannot be closed.", e);
+	   //     log.error("The statement cannot be closed.", e);
 	        	
 	        }
 	    }
@@ -85,7 +86,7 @@ public class DBConnection {
 	            conn.close();
 	        } catch (SQLException e)
 	        {
-	          log.error("The data source connection cannot be closed.", e);
+	  //        log.error("The data source connection cannot be closed.", e);
 	        	
 	        }
 	        
